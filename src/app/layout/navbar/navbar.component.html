@@ -1,7 +1,13 @@
-<div class='navbar'>
-    <a routerLink="/">Home</a>
-    <a routerLink="/portafolio">Portafolio</a>
-    <a routerLink="/profile">Perfil</a>
- <span>{{userName}}</span>
- <button (click)="changeName()"> canmbiar</button>
-</div>
+
+<mat-toolbar color="primary">
+    <span>Portafolios</span>
+    <span class="example-spacer"></span>
+    <a  mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/portafolio"> Portafolio </a>
+    
+    <button mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/profile">Profile</button>
+        <button mat-menu-item>Logout</button>
+        </mat-menu>
+  </mat-toolbar>

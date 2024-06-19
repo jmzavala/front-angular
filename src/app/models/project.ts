@@ -5,7 +5,8 @@ export class Project {
     name:string;
     client?: string;
     author?:User;
+    description?:string;
     stars:number;
+    liked:boolean;
     tag:string[];
-
 }

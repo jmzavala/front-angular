@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import { CommonModule, JsonPipe, NgFor } from '@angular/common';
 import { ProjectComponent } from "../project/project.component";
+import { ProjectService } from '../../services/project.service';
 
 @Component({
     selector: 'app-portafolio',
@@ -10,24 +11,15 @@ import { ProjectComponent } from "../project/project.component";
     styleUrl: './portafolio.component.scss',
     imports: [CommonModule, ProjectComponent]
 })
-export class PortafolioComponent {
+export class PortafolioComponent implements OnInit {
 
-  projects:Project[]=[
-    {
-    name:"Sitio producto",
-    stars:2,
-    tag:["HTML","CSS"]
-  },
-  {
-    name:"Sitio Autos",
-    stars:1,
-    tag:["HTML","IMG"]
-  },
-  {
-    name:"Sitio producto",
-    stars:4,
-    tag:["HTML"]
-  },
-];
+  projects:Project[]=[];
+  constructor(private projectService:ProjectService){
 
+  }
+  ngOnInit(): void {
+    this.projects = this.projectService.getProjects();
+  }
+
+  
 }

@@ -1,1 +1,11 @@
-<p>home works!</p>
+
+
+<div class="row">
+    @for (project of projects; track $index) {
+
+        <div class="col-md-3">
+           <card-project [project]=project ></card-project>
+        </div>
+        
+       }
+</div>
