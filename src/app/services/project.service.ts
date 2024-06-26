@@ -49,7 +49,10 @@ export class ProjectService {
     }
    })
   }
-
+  createProject(project:Project){
+       project.id= "id-"+this.myProjects.length;
+      this.myProjects.push(project);
+  }
   getProjectById(projectId: string):Project {
     return this.myProjects.find(item=>item.id===projectId)!;
   }

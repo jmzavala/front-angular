@@ -1,8 +1,13 @@
 
 <div class="container ">
     <div class="card">
-        <div class="card-header"> <h2>Crear Proyecto</h2></div>
+        <div class="card-header"> 
+          
+          <h2>
+            {{title}}
+            </h2></div>
         <div class="card-body">
+
 
         <form [formGroup]="form">
 
@@ -11,7 +16,7 @@
     <mat-form-field class="form-field full-width" appearance="outline">
         <mat-label> Nombre
         </mat-label>
-        <input matInput formControlName="name" required>
+        <input matInput formControlName="name" >
         <mat-error *ngIf="form.get('name')!.touched && form.get('name')!.invalid">
           <span *ngIf="form.get('name')!.errors! &&
             form.get('name')!.errors!['required']
@@ -19,7 +24,7 @@
           </span>
           <span *ngIf="form.get('name')!.errors! &&
             form.get('name')!.errors!['maxlength']
-          ">No puede superar requiredLength
+          ">No puede superar 
            {{form.get('name')!.errors!['maxlength']['requiredLength']}}
           </span>
         </mat-error>
@@ -30,7 +35,7 @@
         <mat-form-field class="form-field full-width" appearance="outline">
             <mat-label> Description
             </mat-label>
-            <input matInput formControlName="description" required>
+            <textarea matInput formControlName="description"></textarea>
             <mat-error *ngIf="form.get('description')!.touched && form.get('description')!.invalid">
               <span *ngIf="form.get('description')!.errors! &&
                 form.get('description')!.errors!['required']
@@ -49,7 +54,9 @@
 </div>
 </form>
 </div>
-<button mat-button (click)="save()">Enviar</button>
+<button mat-button (click)="save()">
+  {{(mode=="create")?"Crear":"Actualizar"}}
+  </button>
 
 </div>
 </div>

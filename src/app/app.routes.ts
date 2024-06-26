@@ -20,7 +20,12 @@ export const routes: Routes = [
 },{
     path:'project/create',
     component: CreateProjectComponent
-},{
+},
+{
+    path: 'project/update/:id',
+    component: CreateProjectComponent
+},
+{
     path:'project/:id',
     component:ProjectDetailComponent
 }
