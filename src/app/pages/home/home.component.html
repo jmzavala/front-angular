@@ -2,10 +2,13 @@
 
 <div class="row">
     @for (project of projects; track $index) {
-
+        @if (project.liked) {
         <div class="col-md-3">
            <card-project [project]=project ></card-project>
         </div>
         
        }
+    }
 </div>
+
+<pre>{{projects|json}}</pre>

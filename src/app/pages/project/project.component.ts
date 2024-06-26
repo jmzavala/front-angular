@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ProjectService } from '../../services/project.service';
+import { DogService } from '../../services/dog.service';
 
 @Component({
   selector: 'card-project',
@@ -17,10 +18,14 @@ import { ProjectService } from '../../services/project.service';
 export class ProjectComponent {
  @Input() project:Project;
 
- constructor(private projectService:ProjectService){
+ constructor(private projectService:ProjectService,
+  private dogService:DogService
+ ){
+
  }
  public like(){ 
   this.projectService.like(this.project.id!);
+  this.dogService.wau();
  }
 
 }

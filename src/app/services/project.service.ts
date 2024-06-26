@@ -6,8 +6,6 @@ import { Project } from '../models/project';
 })
 export class ProjectService {
 
-
-
   myProjects:Project[]=[
     {
       id:"asdf",
@@ -39,7 +37,8 @@ export class ProjectService {
     return this.myProjects;
   }
   public getOnlyFav():Project[]{
-    return this.myProjects.filter(item =>item.liked)
+    return this.myProjects.filter(item =>
+    {return item.liked})
   }
 
   like(id: string) {
