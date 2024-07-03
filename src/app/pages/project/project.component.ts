@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Project } from '../../models/project';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +6,7 @@ import { RouterLink, RouterLinkActive, RouterLinkWithHref } from '@angular/route
 import { MatIconModule } from '@angular/material/icon';
 import { ProjectService } from '../../services/project.service';
 import { DogService } from '../../services/dog.service';
+import { Project } from '../../../../api';
 
 @Component({
   selector: 'card-project',

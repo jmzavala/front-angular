@@ -4,9 +4,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { MatButton } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Project } from '../../models/project';
+import { Project } from '../../../../api';
 import { ProjectService } from '../../services/project.service';
 import { ActivatedRoute } from '@angular/router';
+import { ApiModule, ProjectApiService } from '../../../../api';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-project',
@@ -15,7 +17,9 @@ import { ActivatedRoute } from '@angular/router';
     MatFormFieldModule, 
     ReactiveFormsModule, 
     MatInputModule, 
-    MatButton],
+    MatButton,
+    ApiModule
+  ],
   templateUrl: './create-project.component.html',
   styleUrl: './create-project.component.scss'
 })
@@ -27,9 +31,16 @@ export class CreateProjectComponent {
 
   constructor(private formBuilder:FormBuilder,
     private projectService:ProjectService,
-   private activatedRouter:ActivatedRoute
+   private activatedRouter:ActivatedRoute,
+   private server:ProjectApiService
   ){
 
+    this.server.ping().subscribe({
+      next:(value:string)=>{
+      console.log(value);
+    },error:(err)=>{
+      console.log(err);
+    }})
     this.form = this.formBuilder.group({
       name:['',[Validators.required, Validators.maxLength(45)]],
       description:['',[Validators.minLength(2),
@@ -66,11 +77,16 @@ if(this.mode=="create"){
       name:this.form.get('name')!.value!,
       description:this.form.get('description')!.value,
       liked:false,
-      tag:[],
-      stars:0
     }
+   
     console.log(project);
-    this.projectService.createProject(project);
+    //this.projectService.createProject(project);
+    this.server.createProject(project).subscribe({
+      next: (velue:Project)=>{
+
+      },
+      error: (error)=>{},
+    })
   }
   return;
 }

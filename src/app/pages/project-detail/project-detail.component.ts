@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
-import { Project } from '../../models/project';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Project } from '../../../../api';
 
 @Component({
   selector: 'app-project-detail',
@@ -21,7 +21,6 @@ export class ProjectDetailComponent {
   constructor(private activatedRouter:ActivatedRoute, 
               private router:Router,
               private projectService:ProjectService
-
   )
   {
       this.activatedRouter.params.subscribe(
